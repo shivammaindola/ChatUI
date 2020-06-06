@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         alContacts=loadContacts();
         int i=0;
 
-        //Dummy data
+        //Dummy data 0f 12 contacts
         MyListData[] myListData = new MyListData[] {
                 new MyListData(R.drawable.pic1, alContacts.get(i++),"Hello","11:11","0"),
                 new MyListData(R.drawable.pic2,alContacts.get(i++),"how are you?","10:11","1"),
