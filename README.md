@@ -1,4 +1,5 @@
 # StyleDotMe
 Made a chat interface
 
-![Alt text](https://drive.google.com/file/d/1vk_SkHcZFQGOMVCVORdx3Oz_jmP7QfkZ/view?usp=sharing?raw=true "Title")
+Here is the screenshot
+https://github.com/shivammaindola/StyleDotMe/issues/1#issue-632509339
