@@ -1,8 +1,11 @@
 package com.example.styledotmetask;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,11 +33,28 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MyListData myListData = listdata[position];
 
+        String str=listdata[position].getNumber();
+        if(str.equals("1"))
+        {
+            holder.readImg.setImageResource(R.drawable.a1);
+            holder.userMsgView.setTypeface(null, Typeface.BOLD);
+
+        }
+        else if(str.equals("3"))
+        {
+            holder.readImg.setImageResource(R.drawable.a3);
+            holder.userMsgView.setTextColor(Color.BLUE);
+        }
+        else
+        {
+            //Typing
+            holder.readImg.setImageResource(R.drawable.a4);
+            holder.userMsgView.setTextColor(Color.parseColor("#A9A9A9"));
+        }
         holder.profileImgView.setImageResource(listdata[position].getProfileImg());
         holder.userNameView.setText(listdata[position].getUserName());
         holder.userMsgView.setText(listdata[position].getUserMsg());
         holder.time.setText(listdata[position].getTime());
-        holder.number.setText(listdata[position].getNumber());
 
         holder.chatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +75,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         TextView userNameView;
         TextView userMsgView;
         TextView time;
-        TextView number;
+        ImageView readImg;
 
         ConstraintLayout chatLayout;
 
@@ -65,7 +85,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             this.userNameView=(TextView) itemView.findViewById(R.id.userName);
             this.userMsgView = (TextView) itemView.findViewById(R.id.userMsg);
             this.time=(TextView) itemView.findViewById(R.id.time);
-            this.number=(TextView) itemView.findViewById(R.id.number);
+            this.readImg=(ImageView) itemView.findViewById(R.id.readImg);
             chatLayout = (ConstraintLayout) itemView.findViewById(R.id.chat_layout);
         }
     }

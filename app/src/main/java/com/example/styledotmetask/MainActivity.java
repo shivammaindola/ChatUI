@@ -1,6 +1,7 @@
 package com.example.styledotmetask;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,23 +28,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //getting the toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //placing toolbar in place of actionbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+
         alContacts=loadContacts();
         int i=0;
 
         //Dummy data 0f 12 contacts
         MyListData[] myListData = new MyListData[] {
-                new MyListData(R.drawable.pic1, alContacts.get(i++),"Hello","11:11","0"),
+                new MyListData(R.drawable.pic1, alContacts.get(i++),"Typing...","11:11","3"),
                 new MyListData(R.drawable.pic2,alContacts.get(i++),"how are you?","10:11","1"),
-                new MyListData(R.drawable.pic3,alContacts.get(i++),"kuch bhi","01:23","1"),
+                new MyListData(R.drawable.pic3,alContacts.get(i++),"Kuch bhi","01:23","0"),
                 new MyListData(R.drawable.pic4, alContacts.get(i++),"Nothing","12:44","0"),
-                new MyListData(R.drawable.pic5,alContacts.get(i++),"Good night","01:13","0"),
-                new MyListData(R.drawable.pic6,alContacts.get(i++),"Let's have some fun","03:11","1"),
-                new MyListData(R.drawable.pic7, alContacts.get(i++),"Like what? ","06:11","0"),
-                new MyListData(R.drawable.pic8,alContacts.get(i++),"Ummm..","08:01","1"),
-                new MyListData(R.drawable.pic9,alContacts.get(i++),"Let's goto ladak","07:17","0"),
-                new MyListData(R.drawable.pic1, alContacts.get(i++),"good plan","09:51","1"),
-                new MyListData(R.drawable.pic7,alContacts.get(i++),"nahh","07:11","1"),
-                new MyListData(R.drawable.pic4,alContacts.get(i++),"I'm ready","01:17","1"),
+                new MyListData(R.drawable.pic5,alContacts.get(i++),"Good night","1 day ago","1"),
+                new MyListData(R.drawable.pic6,alContacts.get(i++),"Come out bro","1 day ago","0"),
+                new MyListData(R.drawable.pic7, alContacts.get(i++),"Kaise ho? ","2 day ago","0"),
+                new MyListData(R.drawable.pic8,alContacts.get(i++),"Ummm..","3 day ago","1"),
+                new MyListData(R.drawable.pic9,alContacts.get(i++),"Let's goto ladak","3 day ago","1"),
+                new MyListData(R.drawable.pic1, alContacts.get(i++),"good plan","3 day ago","0"),
+                new MyListData(R.drawable.pic7,alContacts.get(i++),"nahh","3 day ago","0"),
+                new MyListData(R.drawable.pic4,alContacts.get(i++),"I'm ready","3 day ago","0"),
         };
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.chat_list);
@@ -76,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
                 do {
                     String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-
-
                         Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", new String[]{id}, null);
                         while (pCur.moveToNext()) {
                             String contactNumber = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
